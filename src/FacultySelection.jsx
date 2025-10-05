@@ -125,8 +125,8 @@ function FacultySelection({ selectedCourses, courses, onContinue, onBack, facult
         </p>
       </div>
 
-      {/* Navigation Buttons */}
-      <div className="flex justify-between mb-8">
+      {/* Back Button */}
+      <div className="flex mb-8">
         {onBack && (
           <button
             onClick={onBack}
@@ -138,12 +138,6 @@ function FacultySelection({ selectedCourses, courses, onContinue, onBack, facult
             Back
           </button>
         )}
-        <button
-          onClick={handleContinue}
-          className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
-        >
-          Continue to Time & Day Preferences
-        </button>
       </div>
 
       {/* Course Selection for Faculty Assignment */}
@@ -157,14 +151,17 @@ function FacultySelection({ selectedCourses, courses, onContinue, onBack, facult
           className="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
         >
           <option value="">Choose a course...</option>
-          {selectedCourses.map(courseCode => {
-            const course = coursesByCode[courseCode][0];
-            return (
-              <option key={courseCode} value={courseCode}>
-                {courseCode} - {course.title}
-              </option>
-            );
-          })}
+          {selectedCourses
+            .filter(courseCode => !facultyPreferences[courseCode]) // Filter out courses that already have preferences
+            .map(courseCode => {
+              const course = coursesByCode[courseCode][0];
+              return (
+                <option key={courseCode} value={courseCode}>
+                  {courseCode} - {course.title}
+                </option>
+              );
+            })
+          }
         </select>
       </div>
 
@@ -254,16 +251,32 @@ function FacultySelection({ selectedCourses, courses, onContinue, onBack, facult
               </div>
             ))}
           </div>
+          <div className="mt-6 flex justify-center">
+            <button
+              onClick={handleContinue}
+              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+            >
+              Continue to Time & Day Preferences
+            </button>
+          </div>
         </div>
       )}
 
       {/* No Preferences Note */}
       {Object.keys(facultyPreferences).length === 0 && (
         <div className="mb-6 p-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg">
-          <p className="text-gray-600 dark:text-gray-300 text-center">
+          <p className="text-gray-600 dark:text-gray-300 text-center mb-4">
             No faculty preferences set. You can continue without selecting any preferred faculty, 
             or select courses above to assign preferred faculty.
           </p>
+          <div className="flex justify-center">
+            <button
+              onClick={handleContinue}
+              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+            >
+              Continue to Time & Day Preferences
+            </button>
+          </div>
         </div>
       )}
     </div>

@@ -29,8 +29,8 @@ function TimeAndDayPreferences({ onContinue, onBack, timePreferences }) {
         </p>
       </div>
 
-      {/* Navigation Buttons */}
-      <div className="flex justify-between mb-8">
+      {/* Back Button */}
+      <div className="flex mb-8">
         {onBack && (
           <button
             onClick={onBack}
@@ -42,12 +42,6 @@ function TimeAndDayPreferences({ onContinue, onBack, timePreferences }) {
             Back
           </button>
         )}
-        <button
-          onClick={handleContinue}
-          className="px-6 py-3 bg-blue-600 dark:bg-blue-700 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors font-medium"
-        >
-          Generate My Routines
-        </button>
       </div>
 
       <div className="space-y-8">
@@ -135,7 +129,7 @@ function TimeAndDayPreferences({ onContinue, onBack, timePreferences }) {
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
             Your Preferences Summary
           </h3>
-          <div className="space-y-2 text-sm">
+          <div className="space-y-2 text-sm mb-6">
             <div className="flex justify-between">
               <span className="text-gray-600 dark:text-gray-400">Earliest class start time:</span>
               <span className="font-medium text-gray-900 dark:text-white">{preferredStartTime}</span>
@@ -146,6 +140,14 @@ function TimeAndDayPreferences({ onContinue, onBack, timePreferences }) {
                 {allowMonday ? 'Allowed' : 'Not allowed'}
               </span>
             </div>
+          </div>
+          <div className="flex justify-center">
+            <button
+              onClick={handleContinue}
+              className="px-6 py-3 bg-blue-600 dark:bg-blue-700 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors font-medium"
+            >
+              Generate My Routines
+            </button>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PdfUploadAndParse from './PdfUploadAndParse_New';
 import ImprovedCourseSelection from './ImprovedCourseSelection';
 import FacultySelection from './FacultySelection';
@@ -13,9 +13,15 @@ function ImprovedCourseRoutinePlanner({ darkMode, toggleDarkMode }) {
   const [facultyPreferences, setFacultyPreferences] = useState({});
   const [timePreferences, setTimePreferences] = useState({});
   const [routineResults, setRoutineResults] = useState(null);
+  
+  // Scroll to top whenever step changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentStep]);
 
   const handleBackToLanding = () => {
     // Refresh the page to go back to landing
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     window.location.reload();
   };
 

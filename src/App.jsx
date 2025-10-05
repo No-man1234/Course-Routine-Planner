@@ -40,6 +40,11 @@ function App() {
   useEffect(() => {
     applyTheme(darkMode);
   }, []);
+  
+  // Scroll to top when switching between landing page and application
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [showLandingPage]);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -47,6 +52,7 @@ function App() {
 
   const handleGetStarted = () => {
     setShowLandingPage(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   if (showLandingPage) {
