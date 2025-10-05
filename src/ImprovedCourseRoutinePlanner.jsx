@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PdfUploadAndParse from './PdfUploadAndParse';
+import PdfUploadAndParse from './PdfUploadAndParse_New';
 import ImprovedCourseSelection from './ImprovedCourseSelection';
 import FacultySelection from './FacultySelection';
 import TimeAndDayPreferences from './TimeAndDayPreferences';
