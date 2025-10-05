@@ -1,0 +1,5 @@
+{
+  "terminal.integrated.allowAutomationShell": true
+}
+// This setting allows the integrated terminal to run automation scripts
+// without being blocked by security settings. This is useful for development
