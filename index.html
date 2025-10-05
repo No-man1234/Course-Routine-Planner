@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/Course-Routine-Planner/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Course Routine Planner - Create your perfect semester schedule with smart routine suggestions powered by AI" />
+    <meta name="keywords" content="course planner, university schedule, semester planner, routine generator" />
+    <meta name="theme-color" content="#0ea5e9" />
+    
+    <!-- Theme initialization script - runs before page renders -->
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+        
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
+    
+    <!-- Preload fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <title>Course Routine Planner - Smart Semester Scheduling</title>
+    
+    <style>
+      /* Prevent flash of unstyled content */
+      html {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+      }
+      
+      /* Loading spinner */
+      .loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      }
+      
+      .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #e2e8f0;
+        border-top: 4px solid #0ea5e9;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      /* Hide loading once React loads */
+      #root:not(:empty) + .loading {
+        display: none;
+      }
+    </style>
+    <script type="module" crossorigin src="/Course-Routine-Planner/assets/index-CkVR_yl6.js"></script>
+    <link rel="stylesheet" crossorigin href="/Course-Routine-Planner/assets/index-BzWb2Pte.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <div class="loading">
+      <div class="spinner"></div>
+    </div>
+  </body>
+</html>
